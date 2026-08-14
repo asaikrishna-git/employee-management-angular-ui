@@ -1,0 +1,25 @@
+<h1>Add Employee</h1>
+
+<a routerLink="/employees">Back to Employees</a>
+
+<br><br>
+
+<form (ngSubmit)="save()">
+  <label>Name:</label>
+  <input name="name" [(ngModel)]="employee.name" required>
+  <br><br>
+
+  <label>Location:</label>
+  <input name="location" [(ngModel)]="employee.location" required>
+  <br><br>
+
+  <label>Email:</label>
+  <input name="email" [(ngModel)]="employee.email" required>
+  <br><br>
+
+  <label>Mobile:</label>
+  <input name="mobile" [(ngModel)]="employee.mobile" required>
+  <br><br>
+
+  <button type="submit">Save</button>
+</form>

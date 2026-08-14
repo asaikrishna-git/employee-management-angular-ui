@@ -1,0 +1,41 @@
+
+<h1>Employee Management System</h1>
+
+<a routerLink="/employees">Employees List</a> |
+<a routerLink="/addemployee">Add Employee</a>
+
+<br><br>
+
+Filter By:
+<input id="filter" [(ngModel)]="filterText">
+
+<br><br>
+
+Total Number of Employees:
+<label id="count">{{filtered.length}}</label>
+
+<table border="1">
+<tr>
+<th>Emp ID</th>
+<th>Name</th>
+<th>Location</th>
+<th>Email</th>
+<th>Mobile</th>
+<th>Edit</th>
+<th>Delete</th>
+</tr>
+
+<tr *ngFor="let emp of filtered; let i=index">
+
+<td><a [routerLink]="['/employee',emp.id]">{{emp.id}}</a></td>
+
+<td id="name{{i+1}}">{{emp.name}}</td>
+<td id="loc{{i+1}}">{{emp.location}}</td>
+<td id="email{{i+1}}">{{emp.email}}</td>
+<td id="mob{{i+1}}">{{emp.mobile}}</td>
+
+<td><a [routerLink]="['/editemployee',emp.id]">Edit{{i+1}}</a></td>
+<td><a (click)="delete(emp.id)">Delete{{i+1}}</a></td>
+
+</tr>
+</table>

@@ -1,0 +1,17 @@
+<h1>Employee Details</h1>
+
+<a routerLink="/employees">Back to Employees</a>
+
+<br><br>
+
+<div *ngIf="employee; else notFound">
+  <p><strong>ID:</strong> {{ employee.id }}</p>
+  <p><strong>Name:</strong> {{ employee.name }}</p>
+  <p><strong>Location:</strong> {{ employee.location }}</p>
+  <p><strong>Email:</strong> {{ employee.email }}</p>
+  <p><strong>Mobile:</strong> {{ employee.mobile }}</p>
+</div>
+
+<ng-template #notFound>
+  <p>Employee not found.</p>
+</ng-template>
