@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { Employee } from '../models/employee.model';
 import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-add-employee',
+  standalone: true,
+  imports: [FormsModule, RouterLink],
   templateUrl: './add-employee.component.html'
 })
 export class AddEmployeeComponent {

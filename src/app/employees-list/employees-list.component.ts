@@ -1,12 +1,17 @@
 
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { EmployeeService } from '../services/employee.service';
 
 @Component({
-selector:'app-employees-list',
-templateUrl:'./employees-list.component.html'
+  selector: 'app-employees-list',
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterLink],
+  templateUrl: './employees-list.component.html'
 })
-export class EmployeesListComponent implements OnInit{
+export class EmployeesListComponent implements OnInit {
 
 employees:any[]=[];
 filterText='';

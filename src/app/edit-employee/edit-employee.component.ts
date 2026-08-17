@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { Employee } from '../models/employee.model';
 import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-edit-employee',
+  standalone: true,
+  imports: [FormsModule, RouterLink],
   templateUrl: './edit-employee.component.html'
 })
 export class EditEmployeeComponent implements OnInit {
