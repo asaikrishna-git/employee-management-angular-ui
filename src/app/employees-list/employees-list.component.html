@@ -1,41 +1,50 @@
 
-<h1>Employee Management System</h1>
+<div class="card shadow-sm">
+  <div class="card-header bg-primary text-white">
+    <h2 class="mb-0">Employees List</h2>
+  </div>
+  <div class="card-body">
+    <div class="mb-4">
+      <div class="input-group">
+        <span class="input-group-text">Filter By Name:</span>
+        <input id="filter" class="form-control" type="text" [(ngModel)]="filterText" placeholder="Enter employee name">
+      </div>
+    </div>
 
-<a routerLink="/employees">Employees List</a> |
-<a routerLink="/addemployee">Add Employee</a>
+    <div class="mb-3 p-3 bg-light rounded">
+      <strong>Total Number of Employees:</strong>
+      <span id="count" class="badge bg-info">{{filtered.length}}</span>
+    </div>
 
-<br><br>
-
-Filter By:
-<input id="filter" [(ngModel)]="filterText">
-
-<br><br>
-
-Total Number of Employees:
-<label id="count">{{filtered.length}}</label>
-
-<table border="1">
-<tr>
-<th>Emp ID</th>
-<th>Name</th>
-<th>Location</th>
-<th>Email</th>
-<th>Mobile</th>
-<th>Edit</th>
-<th>Delete</th>
-</tr>
-
-<tr *ngFor="let emp of filtered; let i=index">
-
-<td><a [routerLink]="['/employee',emp.id]">{{emp.id}}</a></td>
-
-<td id="name{{i+1}}">{{emp.name}}</td>
-<td id="loc{{i+1}}">{{emp.location}}</td>
-<td id="email{{i+1}}">{{emp.email}}</td>
-<td id="mob{{i+1}}">{{emp.mobile}}</td>
-
-<td><a [routerLink]="['/editemployee',emp.id]">Edit{{i+1}}</a></td>
-<td><a (click)="delete(emp.id)">Delete{{i+1}}</a></td>
-
-</tr>
-</table>
+    <div class="table-responsive">
+      <table class="table table-hover table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Emp ID</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of filtered; let i=index">
+            <td><a class="text-decoration-none" [routerLink]="['/employee',emp.id]">{{emp.id}}</a></td>
+            <td id="name{{i+1}}">{{emp.name}}</td>
+            <td id="loc{{i+1}}">{{emp.location}}</td>
+            <td id="email{{i+1}}">{{emp.email}}</td>
+            <td id="mob{{i+1}}">{{emp.mobile}}</td>
+            <td>
+              <a class="btn btn-sm btn-warning me-2" [routerLink]="['/editemployee',emp.id]">Edit</a>
+              <button class="btn btn-sm btn-danger" (click)="delete(emp.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="filtered.length === 0" class="alert alert-info mt-3">
+      No employees found.
+    </div>
+  </div>
+</div>

@@ -1,17 +1,63 @@
-<h1>Employee Details</h1>
+<div style="max-width: 600px; margin: 0 auto;">
+  <a class="btn btn-secondary btn-sm mb-3" routerLink="/employees">← Back to Employees</a>
 
-<a routerLink="/employees">Back to Employees</a>
+  <div *ngIf="employee; else notFound" class="card shadow-sm">
+    <div class="card-header bg-info text-white">
+      <h2 class="mb-0">Employee Details</h2>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <strong>ID:</strong>
+        </div>
+        <div class="col-md-8">
+          {{ employee.id }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <strong>Name:</strong>
+        </div>
+        <div class="col-md-8">
+          {{ employee.name }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <strong>Location:</strong>
+        </div>
+        <div class="col-md-8">
+          {{ employee.location }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <strong>Email:</strong>
+        </div>
+        <div class="col-md-8">
+          <a href="mailto:{{ employee.email }}">{{ employee.email }}</a>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <strong>Mobile:</strong>
+        </div>
+        <div class="col-md-8">
+          <a href="tel:{{ employee.mobile }}">{{ employee.mobile }}</a>
+        </div>
+      </div>
+      <div class="mt-4">
+        <a class="btn btn-warning me-2" [routerLink]="['/editemployee', employee.id]">Edit</a>
+        <a routerLink="/employees" class="btn btn-outline-secondary">Back</a>
+      </div>
+    </div>
+  </div>
 
-<br><br>
-
-<div *ngIf="employee; else notFound">
-  <p><strong>ID:</strong> {{ employee.id }}</p>
-  <p><strong>Name:</strong> {{ employee.name }}</p>
-  <p><strong>Location:</strong> {{ employee.location }}</p>
-  <p><strong>Email:</strong> {{ employee.email }}</p>
-  <p><strong>Mobile:</strong> {{ employee.mobile }}</p>
+  <ng-template #notFound>
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">Employee Not Found</h4>
+      <p>The employee with the requested ID could not be found.</p>
+      <a routerLink="/employees" class="btn btn-primary btn-sm">Return to Employees</a>
+    </div>
+  </ng-template>
 </div>
-
-<ng-template #notFound>
-  <p>Employee not found.</p>
-</ng-template>

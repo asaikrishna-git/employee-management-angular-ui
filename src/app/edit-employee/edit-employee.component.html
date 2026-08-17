@@ -1,25 +1,40 @@
-<h1>Edit Employee</h1>
+<div class="card shadow-sm" style="max-width: 600px; margin: 0 auto;">
+  <div class="card-header bg-warning text-dark">
+    <h2 class="mb-0">Edit Employee</h2>
+  </div>
+  <div class="card-body">
+    <a class="btn btn-secondary btn-sm mb-3" routerLink="/employees">← Back to Employees</a>
 
-<a routerLink="/employees">Back to Employees</a>
+    <form (ngSubmit)="update()" class="mt-3">
+      <div class="mb-3">
+        <label for="empId" class="form-label">Employee ID:</label>
+        <input id="empId" type="text" class="form-control" [value]="employee.id" disabled>
+      </div>
 
-<br><br>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input id="name" name="name" class="form-control" [(ngModel)]="employee.name" required>
+      </div>
 
-<form (ngSubmit)="update()">
-  <label>Name:</label>
-  <input name="name" [(ngModel)]="employee.name" required>
-  <br><br>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location:</label>
+        <input id="location" name="location" class="form-control" [(ngModel)]="employee.location" required>
+      </div>
 
-  <label>Location:</label>
-  <input name="location" [(ngModel)]="employee.location" required>
-  <br><br>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input id="email" name="email" type="email" class="form-control" [(ngModel)]="employee.email" required>
+      </div>
 
-  <label>Email:</label>
-  <input name="email" [(ngModel)]="employee.email" required>
-  <br><br>
+      <div class="mb-3">
+        <label for="mobile" class="form-label">Mobile:</label>
+        <input id="mobile" name="mobile" type="tel" class="form-control" [(ngModel)]="employee.mobile" required>
+      </div>
 
-  <label>Mobile:</label>
-  <input name="mobile" [(ngModel)]="employee.mobile" required>
-  <br><br>
-
-  <button type="submit">Update</button>
-</form>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-start mt-4">
+        <button type="submit" class="btn btn-warning">Update</button>
+        <a routerLink="/employees" class="btn btn-outline-secondary">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
