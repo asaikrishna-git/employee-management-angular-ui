@@ -5,9 +5,19 @@
   </div>
   <div class="card-body">
     <div class="mb-4">
-      <div class="input-group">
-        <span class="input-group-text">Filter By Name:</span>
-        <input id="filter" class="form-control" type="text" [(ngModel)]="filterText" placeholder="Enter employee name">
+      <div class="row g-2">
+        <div class="col-md-4">
+          <label for="filterType" class="form-label d-block">Filter By:</label>
+          <select id="filterType" class="form-select" [(ngModel)]="filterType">
+            <option *ngFor="let option of filterOptions" [value]="option.value">
+              {{option.label}}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-8">
+          <label for="filter" class="form-label d-block">Search:</label>
+          <input id="filter" class="form-control" type="text" [(ngModel)]="filterText" [placeholder]="'Search by ' + (filterType === 'all' ? 'name, location, email, or mobile' : filterType)">
+        </div>
       </div>
     </div>
 
